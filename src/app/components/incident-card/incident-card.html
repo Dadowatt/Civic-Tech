@@ -1,1 +1,23 @@
-<p>incident-card works!</p>
+<div class="card h-100 shadow-sm border-0">
+
+  <img src="https://picsum.photos/600/400" class="card-img-top incident-image" alt="incident">
+
+  <div class="card-body">
+
+    <span class="badge bg-secondary mb-3">{{ incident.categorie }}</span>
+
+    <h5 class="card-title fw-bold">{{ incident.titre }}</h5>
+
+    <p class="card-text text-muted">{{ incident.description }}</p>
+
+    <div class="small text-secondary mt-3">
+      <div><span><i class="bi bi-geo-fill"></i></span> {{ incident.localisation }}</div>
+      <div><span><i class="bi bi-calendar-fill"></i></span> {{ incident.date }}</div>
+    </div>
+  </div>
+
+  <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+    <span class="fw-bold">{{ incident.votes }} soutiens</span>
+    <button class="btn btn-outline-primary btn-sm">Soutenir</button>
+  </div>
+</div>
