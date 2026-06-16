@@ -8,7 +8,7 @@
     <div class="d-flex justify-content-between">
             <span [ngClass]="getCategoryClass(incident.categorie)" class="badge bg-secondary mb-3">{{ incident.categorie }}</span>
 
-            <a routerLink="/" class="text-primary fw-bold text-decoration-none">voir plus</a>
+            <a [routerLink]="['/incident', incident.id]" class="text-primary fw-bold text-decoration-none">voir plus</a>
     </div>
 
     <h5 class="card-title fw-bold">{{ incident.titre }}</h5>
