@@ -6,8 +6,9 @@ export interface IncidentInterface {
   categorie: 'Voirie' | 'Électricité' | 'Sécurité' | 'Assainissement' | 'Autre';
   description: string;   // minimum 20 caractères
   localisation: string;
-  image?: string;        // URL, facultatif
+  image?: string;       
   date: Date;
-  supports: number;      // compteur de soutiens
+  supports: number;
+  supported?: boolean;
 }
 

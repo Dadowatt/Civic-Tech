@@ -14,30 +14,30 @@ export class IncidentService  {
       id: 1,
       titre: 'Incident de voirie',
       categorie: 'Voirie',
-      description: 'Nid de poule dangereux sur l’avenue Cheikh Anta Diop, près de l’école.',
+      description: "Nid de poule dangereux sur l'avenue Cheikh Anta Diop, près de l'école.",
       localisation: 'Avenue Cheikh Anta Diop, Dakar',
       image: '',
-      date: new Date('2026-06-10'),
+      date: new Date(),
       supports: 3,
     },
     {
       id: 2,
       titre: 'Incident électrique',
       categorie: 'Électricité',
-      description: 'Lampadaire éteint depuis une semaine, rue de la République – risque d’insécurité.',
+      description: "Lampadaire éteint depuis une semaine, rue de la République, risque d'insécurité.",
       localisation: 'Rue de la République, Dakar',
       image: '',
-      date: new Date('2026-06-12'),
+      date: new Date(),
       supports: 7,
     },
     {
       id: 3,
-      titre: 'Incident de sécurité',
-      categorie: 'Sécurité',
-      description: 'Incident de sécurité au centre de la ville, rue de la République – risque d’insécurité.',
+      titre: 'Incident de propreté',
+      categorie: 'Assainissement',
+      description: 'Poubelle débordante au marché Sandaga, odeurs et animaux errants.',
       localisation: 'Marché Sandaga, Dakar',
       image: '',
-      date: new Date('2026-06-13'),
+      date: new Date(),
       supports: 2,
     },
   ];
@@ -95,15 +95,22 @@ private saveToLocalStorage(): void {
     this.saveToLocalStorage();
   }
 
+
   // Incrémenter le compteur de soutiens pour un incident
   supportIncident(id: number): void {
     const current = this.incidentsSubject.getValue(); // on récupère la liste
     const incident = current.find(inc => inc.id === id);
-    if (incident) {
-      incident.supports += 1;
-      this.incidentsSubject.next([...current]); // immutable update
-      this.saveToLocalStorage();
+    if (!incident) return;
+
+    if (incident.supported) {
+      incident.supports--;
+      incident.supported = false
+    }else{
+      incident.supports++;
+      incident.supported = true;
     }
+    this.incidentsSubject.next([...current]); // immutable update
+    this.saveToLocalStorage();
   }
 
   // Optionnel : mettre à jour un incident (si besoin) 
@@ -117,4 +124,12 @@ private saveToLocalStorage(): void {
     }
   }
 
+  deleteIncident(id: number): void {
+  const current = this.incidentsSubject.getValue();
+  const updated = current.filter(
+    incident => incident.id !== id
+  );
+  this.incidentsSubject.next(updated);
+  this.saveToLocalStorage();
+}
 }

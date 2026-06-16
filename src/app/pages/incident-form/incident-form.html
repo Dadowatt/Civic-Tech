@@ -1,10 +1,9 @@
-
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card shadow border-0 rounded-4">
 
-                <div class="card-header bg-primary text-white text-center py-4 rounded-top-4">
+                <div class="card-header entete text-white text-center py-4 rounded-top-4">
                     <h2 class="fw-bold mb-1"> Signaler un incident</h2>
                     <p class="mb-0"> Aidez la municipalité à améliorer votre quartier</p>
                 </div>
@@ -60,8 +59,8 @@
                     </div>
 
                     <div class="d-flex justify-content-end gap-3">
-                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Annuler</button>
-                        <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-lg px-4">Envoyer le signalement</button>
+                        <button type="button" routerLink="/" class="btn btn-outline-secondary">Annuler</button>
+                        <button type="submit" [disabled]="form.invalid" class="btn btn-signaler text-white btn-lg px-4">Envoyer le signalement</button>
                     </div>
                 </div>
                 </form>
