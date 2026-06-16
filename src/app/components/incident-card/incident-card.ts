@@ -8,6 +8,7 @@ import { IncidentInterface } from '../../models/incident.interface';
   styleUrl: './incident-card.css',
 })
 
+
 export class IncidentCard {
 @Input() incident!: IncidentInterface;
   

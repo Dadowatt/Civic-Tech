@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IncidentInterface } from '../models/incident.interface'; // interface pour le mock
 
-
+// Service pour gérer les incidents
 @Injectable({ providedIn: 'root' })  // injectable dans le module app (pour injecter le service dans les composants)
 export class IncidentService  {
   private incidentsSubject = new BehaviorSubject<IncidentInterface[]>([]);
@@ -32,9 +32,9 @@ export class IncidentService  {
     },
     {
       id: 3,
-      titre: 'Incident de propreté',
-      categorie: 'Propreté',
-      description: 'Poubelle débordante au marché Sandaga, odeurs et animaux errants.',
+      titre: 'Incident de sécurité',
+      categorie: 'Sécurité',
+      description: 'Incident de sécurité au centre de la ville, rue de la République – risque d’insécurité.',
       localisation: 'Marché Sandaga, Dakar',
       image: '',
       date: new Date('2026-06-13'),
@@ -62,7 +62,7 @@ constructor() {
       this.saveToLocalStorage();
     }
   }
-
+// Sert à sauvegarder les incidents dans localStorage
 private saveToLocalStorage(): void {
   if (typeof window === 'undefined') return;
 
