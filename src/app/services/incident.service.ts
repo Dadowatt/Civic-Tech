@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IncidentInterface } from '../models/incident.interface'; // interface pour le mock
 
-
+// Service pour gérer les incidents
 @Injectable({ providedIn: 'root' })  // injectable dans le module app (pour injecter le service dans les composants)
 export class IncidentService  {
   private incidentsSubject = new BehaviorSubject<IncidentInterface[]>([]);
@@ -62,7 +62,7 @@ constructor() {
       this.saveToLocalStorage();
     }
   }
-
+// Sert à sauvegarder les incidents dans localStorage
 private saveToLocalStorage(): void {
   if (typeof window === 'undefined') return;
 
@@ -98,7 +98,7 @@ private saveToLocalStorage(): void {
 
   // Incrémenter le compteur de soutiens pour un incident
   supportIncident(id: number): void {
-    const current = this.incidentsSubject.getValue();
+    const current = this.incidentsSubject.getValue(); // on récupère la liste
     const incident = current.find(inc => inc.id === id);
     if (!incident) return;
 
@@ -113,7 +113,7 @@ private saveToLocalStorage(): void {
     this.saveToLocalStorage();
   }
 
-  // Optionnel : mettre à jour un incident (si besoin)
+  // Optionnel : mettre à jour un incident (si besoin) 
   updateIncident(updated: IncidentInterface): void {
     const current = this.incidentsSubject.getValue();
     const index = current.findIndex(inc => inc.id === updated.id);

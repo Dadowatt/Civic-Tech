@@ -12,6 +12,7 @@ import { IncidentService } from '../../services/incident.service';
   styleUrl: './incident-card.css',
 })
 
+
 export class IncidentCard {
 @Input() incident!: IncidentInterface;
 
