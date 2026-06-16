@@ -3,11 +3,10 @@ import { ActivatedRoute, Router , RouterModule} from '@angular/router';
 import { IncidentInterface } from '../../models/incident.interface';
 import { IncidentService } from '../../services/incident.service';
 import { CommonModule } from '@angular/common';
-import { Navbar } from "../../components/navbar/navbar";
 
 @Component({
   selector: 'app-incident-detail',
-  imports: [CommonModule,RouterModule, Navbar],
+  imports: [CommonModule,RouterModule],
   templateUrl: './incident-detail.html',
   styleUrl: './incident-detail.css',
 })
