@@ -17,7 +17,7 @@ export class IncidentService  {
       description: 'Nid de poule dangereux sur l’avenue Cheikh Anta Diop, près de l’école.',
       localisation: 'Avenue Cheikh Anta Diop, Dakar',
       image: '',
-      date: new Date('2026-06-10'),
+      date: new Date(),
       supports: 3,
     },
     {
@@ -27,7 +27,7 @@ export class IncidentService  {
       description: 'Lampadaire éteint depuis une semaine, rue de la République – risque d’insécurité.',
       localisation: 'Rue de la République, Dakar',
       image: '',
-      date: new Date('2026-06-12'),
+      date: new Date(),
       supports: 7,
     },
     {
@@ -37,7 +37,7 @@ export class IncidentService  {
       description: 'Poubelle débordante au marché Sandaga, odeurs et animaux errants.',
       localisation: 'Marché Sandaga, Dakar',
       image: '',
-      date: new Date('2026-06-13'),
+      date: new Date(),
       supports: 2,
     },
   ];

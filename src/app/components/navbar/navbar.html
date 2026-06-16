@@ -1,13 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+<nav class="navbar navbar-expand-lg navbar-dark">
 
-  <div class="d-flex flex-column text-white">
+<div class="logo d-flex align-items-center">
+    <div class="logo-icon me-2 bg-secondary d-flex justify-content-center align-items-center">
+        <i class="bi bi-shield text-white"></i>
+    </div>
+    <div class="d-flex flex-column text-white">
     <span class="fw-bold fs-5">Mairie de Dakar</span>
-    <small>Signalement Citoyen</small>
+    <small class="slogan">Signalement Citoyen</small>
   </div>
+</div>
 
   <div class="ms-auto d-flex gap-2">
-    <button class="btn btn-light btn-sm">Incidents</button>
-    <button routerLink="/nouveau" class="btn btn-warning btn-sm">Signaler</button>
+    <button routerLink="/" class="btn btn-light btn-sm">Incidents</button>
+    <button routerLink="/nouveau" class="text-white signal btn btn-sm">Signaler</button>
   </div>
 
 </nav>

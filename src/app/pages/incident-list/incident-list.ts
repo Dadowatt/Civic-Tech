@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-incident-list',
-  imports: [IncidentCard, Navbar, CommonModule],
+  imports: [IncidentCard, CommonModule],
   templateUrl: './incident-list.html',
   styleUrl: './incident-list.css',
 })
