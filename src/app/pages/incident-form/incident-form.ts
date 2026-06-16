@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Navbar } from "../../components/navbar/navbar";
-import { RouterLink } from "@angular/router";
+import { IncidentService } from '../../services/incident.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-incident-form',
@@ -9,34 +10,40 @@ import { RouterLink } from "@angular/router";
   templateUrl: './incident-form.html',
   styleUrl: './incident-form.css',
 })
+
 export class IncidentForm {
+
+  constructor(private incidentService: IncidentService,  private router: Router) {}
+
   form = new FormGroup({
     titre: new FormControl('', Validators.required),
     categorie: new FormControl('', Validators.required),
     localisation: new FormControl('', Validators.required),
-    description: new FormControl('', [Validators.required, Validators.minLength(20)]),
+    description: new FormControl('', [
+      Validators.required,
+      Validators.minLength(20)
+    ]),
     image: new FormControl(null)
   });
 
   onSubmit(){
+
     if (this.form.invalid){
       this.form.markAllAsTouched();
       return;
     }
 
     const newIncident = {
-      id: Date.now(),
       titre: this.form.value.titre || '',
-      categorie: this.form.value.categorie || '',
+      categorie: this.form.value.categorie as any,
       localisation: this.form.value.localisation || '',
       description: this.form.value.description || '',
-      image: this.form.value.image || null,
-      supports: 0,
-      date: new Date()
+      image: this.form.value.image || '',
     };
-    console.log('Incident créé :', newIncident);
 
+    this.incidentService.addIncident(newIncident);
     this.form.reset();
+    this.router.navigate(['/']);
   }
 
 }

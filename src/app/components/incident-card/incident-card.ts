@@ -1,7 +1,9 @@
 import { Component, Input} from '@angular/core';
 import { IncidentInterface } from '../../models/incident.interface';
+
 import { RouterLink } from "@angular/router";
 import { CommonModule } from '@angular/common';
+import { IncidentService } from '../../services/incident.service';
 
 @Component({
   selector: 'app-incident-card',
@@ -12,6 +14,16 @@ import { CommonModule } from '@angular/common';
 
 export class IncidentCard {
 @Input() incident!: IncidentInterface;
+
+  constructor(
+    private incidentService: IncidentService
+  ){}
+  deleteIncident(){
+    this.incidentService.deleteIncident(
+      this.incident.id
+    );
+
+  }
   
 }
 

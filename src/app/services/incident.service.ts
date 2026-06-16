@@ -14,7 +14,7 @@ export class IncidentService  {
       id: 1,
       titre: 'Incident de voirie',
       categorie: 'Voirie',
-      description: 'Nid de poule dangereux sur l’avenue Cheikh Anta Diop, près de l’école.',
+      description: "Nid de poule dangereux sur l'avenue Cheikh Anta Diop, près de l'école.",
       localisation: 'Avenue Cheikh Anta Diop, Dakar',
       image: '',
       date: new Date(),
@@ -24,7 +24,7 @@ export class IncidentService  {
       id: 2,
       titre: 'Incident électrique',
       categorie: 'Électricité',
-      description: 'Lampadaire éteint depuis une semaine, rue de la République – risque d’insécurité.',
+      description: "Lampadaire éteint depuis une semaine, rue de la République, risque d'insécurité.",
       localisation: 'Rue de la République, Dakar',
       image: '',
       date: new Date(),
@@ -95,6 +95,7 @@ private saveToLocalStorage(): void {
     this.saveToLocalStorage();
   }
 
+
   // Incrémenter le compteur de soutiens pour un incident
   supportIncident(id: number): void {
     const current = this.incidentsSubject.getValue();
@@ -116,4 +117,13 @@ private saveToLocalStorage(): void {
       this.saveToLocalStorage();
     }
   }
+
+  deleteIncident(id: number): void {
+  const current = this.incidentsSubject.getValue();
+  const updated = current.filter(
+    incident => incident.id !== id
+  );
+  this.incidentsSubject.next(updated);
+  this.saveToLocalStorage();
+}
 }

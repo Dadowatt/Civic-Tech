@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IncidentInterface } from '../../models/incident.interface';
 import { IncidentService } from '../../services/incident.service';
 import { IncidentCard } from "../../components/incident-card/incident-card";
-import { Navbar } from "../../components/navbar/navbar";
 import { CommonModule } from '@angular/common';
 
 
@@ -19,6 +18,7 @@ export class IncidentList {
 
  ngOnInit(){
     this.incidentService.getIncidents().subscribe(data => {
+      console.log("Liste reçue :", data);
       this.incidents = data;
     })
   }
