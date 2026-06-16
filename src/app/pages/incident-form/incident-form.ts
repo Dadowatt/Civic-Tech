@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Navbar } from "../../components/navbar/navbar";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-incident-form',
-  imports: [ReactiveFormsModule, Navbar],
+  imports: [ReactiveFormsModule],
   templateUrl: './incident-form.html',
   styleUrl: './incident-form.css',
 })
@@ -30,7 +31,7 @@ export class IncidentForm {
       localisation: this.form.value.localisation || '',
       description: this.form.value.description || '',
       image: this.form.value.image || null,
-      votes: 0,
+      supports: 0,
       date: new Date()
     };
     console.log('Incident créé :', newIncident);
