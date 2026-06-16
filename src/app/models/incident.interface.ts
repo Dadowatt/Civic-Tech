@@ -2,11 +2,12 @@ export interface IncidentInterface {
 
   id: number;
   titre: string;
-  categorie: 'Voirie' | 'Électricité' | 'Propreté' | 'Autre';
-  description: string;   // minimum 20 caractères
+  categorie: 'Voirie' | 'Électricité' | 'Assainissement' | 'Autre';
+  description: string;   
   localisation: string;
-  image?: string;        // URL, facultatif
+  image?: string;       
   date: Date;
-  supports: number;      // compteur de soutiens
+  supports: number;
+  supported?: boolean;
 }
 

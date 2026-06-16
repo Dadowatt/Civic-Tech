@@ -33,7 +33,7 @@ export class IncidentService  {
     {
       id: 3,
       titre: 'Incident de propreté',
-      categorie: 'Propreté',
+      categorie: 'Assainissement',
       description: 'Poubelle débordante au marché Sandaga, odeurs et animaux errants.',
       localisation: 'Marché Sandaga, Dakar',
       image: '',
@@ -100,11 +100,17 @@ private saveToLocalStorage(): void {
   supportIncident(id: number): void {
     const current = this.incidentsSubject.getValue();
     const incident = current.find(inc => inc.id === id);
-    if (incident) {
-      incident.supports += 1;
-      this.incidentsSubject.next([...current]); // immutable update
-      this.saveToLocalStorage();
+    if (!incident) return;
+
+    if (incident.supported) {
+      incident.supports--;
+      incident.supported = false
+    }else{
+      incident.supports++;
+      incident.supported = true;
     }
+    this.incidentsSubject.next([...current]); // immutable update
+    this.saveToLocalStorage();
   }
 
   // Optionnel : mettre à jour un incident (si besoin)

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IncidentService } from '../../services/incident.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-incident-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './incident-form.html',
   styleUrl: './incident-form.css',
 })

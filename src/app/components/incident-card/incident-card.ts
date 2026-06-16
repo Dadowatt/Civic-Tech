@@ -18,12 +18,39 @@ export class IncidentCard {
   constructor(
     private incidentService: IncidentService
   ){}
-  deleteIncident(){
-    this.incidentService.deleteIncident(
-      this.incident.id
-    );
 
+confirmDelete() {
+  const confirmAction = confirm(
+    "Es-tu sûr de vouloir supprimer cet incident ?"
+  );
+
+  if (confirmAction) {
+    this.incidentService.deleteIncident(this.incident.id);
   }
+}
+
+  supportIncident() {
+  this.incidentService.supportIncident(this.incident.id);
+}
+
+getCategoryClass(categorie: string): string {
+  switch (categorie) {
+    case 'Voirie':
+      return 'badge bg-secondary';
+
+    case 'Électricité':
+      return 'badge bg-warning text-dark';
+
+    case 'Assainissement':
+      return 'badge bg-primary';
+
+    case 'Autre':
+      return 'badge bg-success';
+
+    default:
+      return 'badge bg-dark';
+  }
+}
   
 }
 

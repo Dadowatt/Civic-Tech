@@ -6,7 +6,7 @@
   <div class="card-body">
 
     <div class="d-flex justify-content-between">
-            <span class="badge bg-secondary mb-3">{{ incident.categorie }}</span>
+            <span [ngClass]="getCategoryClass(incident.categorie)" class="badge bg-secondary mb-3">{{ incident.categorie }}</span>
 
             <a routerLink="/" class="text-primary fw-bold text-decoration-none">voir plus</a>
     </div>
@@ -24,9 +24,11 @@
   <div class="card-footer bg-white d-flex justify-content-between align-items-center">
     <div>
         <span class="fw-bold me-2">{{ incident.supports }} soutiens</span>
-    <button class="btn btn-outline-primary btn-sm">Soutenir</button>
+    <button (click)="supportIncident()" class="btn btn-outline-primary btn-sm" 
+    [ngClass]="incident.supported ? 'btn-primary text-white' : 'btn-outline-primary'">
+    <i class="bi bi-hand-thumbs-up"> </i>Soutenir</button>
     </div>
     <div>
-        <button class="btn btn-danger btn-sm" (click)="deleteIncident()"><i class="bi bi-trash"></i></button></div>
+        <button class="btn btn-outline-danger btn-sm" (click)="confirmDelete()"><i class="bi bi-trash"></i></button></div>
   </div>
 </div>
