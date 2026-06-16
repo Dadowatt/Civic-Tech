@@ -1,0 +1,22 @@
+.incident-detail-image {
+  height: 450px;
+  object-fit: cover;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-body {
+  background-color: #fff;
+}
+
+.badge {
+  font-size: 0.9rem;
+}
+
+.btn {
+  border-radius: 8px;
+}
+

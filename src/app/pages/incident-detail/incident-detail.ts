@@ -1,30 +1,48 @@
 import { Component , OnInit } from '@angular/core';
-import { ActivatedRoute, Router} from '@angular/router';
-import { Incident } from '../../models/incident.model';
+import { ActivatedRoute, Router , RouterModule} from '@angular/router';
+import { IncidentInterface } from '../../models/incident.interface';
 import { IncidentService } from '../../services/incident.service';
+import { CommonModule } from '@angular/common';
+import { Navbar } from "../../components/navbar/navbar";
 
 @Component({
   selector: 'app-incident-detail',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule, Navbar],
   templateUrl: './incident-detail.html',
   styleUrl: './incident-detail.css',
 })
 export class IncidentDetail implements OnInit{
-  incident!: Incident;
-  constructor(private incidentService: IncidentService, private route: ActivatedRoute, private router: Router) { }
+  incident!: IncidentInterface;
+  erreur = false;
 
+  constructor(private incidentService: IncidentService,
+              private route: ActivatedRoute, 
+              private router: Router) {}
+
+     // On initialise le composant
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (!id){
-      this.router.navigate(['incidents']);
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    // On vérifie qu'il existe un id
+    if (isNaN(id)){
+      this.erreur = true;
       return;
     }
-    this.incidentService.getIncidents(this.route.snapshot.paramMap.get('id')!).subscribe(incident => {
-      this.incident = incident;
-    });
+    // On récupère l'incident
+    this.incident = this.incidentService.getIncidentById(id) as IncidentInterface;
+    if (!this.incident){
+      this.erreur = true;
+    }
+  }
+  supportIncident(): void {
+    if (this.incident){
+      this.incidentService.supportIncident(this.incident.id);
+      // rafraichir la page
+      this.incident = this.incidentService.getIncidentById(this.incident.id) as IncidentInterface;
+    }
+  }
+  goBack(): void {
+    this.router.navigate(['/']);
   }
 
-  onBack(){
-    this.router.navigate(['incidents']);
-  }
+
 }

@@ -97,7 +97,7 @@ private saveToLocalStorage(): void {
 
   // Incrémenter le compteur de soutiens pour un incident
   supportIncident(id: number): void {
-    const current = this.incidentsSubject.getValue();
+    const current = this.incidentsSubject.getValue(); // on récupère la liste
     const incident = current.find(inc => inc.id === id);
     if (incident) {
       incident.supports += 1;
@@ -106,7 +106,7 @@ private saveToLocalStorage(): void {
     }
   }
 
-  // Optionnel : mettre à jour un incident (si besoin)
+  // Optionnel : mettre à jour un incident (si besoin) 
   updateIncident(updated: IncidentInterface): void {
     const current = this.incidentsSubject.getValue();
     const index = current.findIndex(inc => inc.id === updated.id);
@@ -116,4 +116,5 @@ private saveToLocalStorage(): void {
       this.saveToLocalStorage();
     }
   }
+
 }
