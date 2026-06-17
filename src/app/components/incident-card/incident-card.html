@@ -1,7 +1,8 @@
 
 <div class="card h-100 shadow border-0">
 
-  <img src="https://picsum.photos/600/400" class="card-img-top incident-image" alt="incident">
+  <img [src]="incident.image || 'https://picsum.photos/600/400'" class="card-img-top incident-image"
+  alt="incident">
 
   <div class="card-body">
 
@@ -23,10 +24,10 @@
 
   <div class="card-footer bg-white d-flex justify-content-between align-items-center">
     <div>
-        <span class="fw-bold me-2">{{ incident.supports }} soutiens</span>
-    <button (click)="supportIncident()" class="btn btn-outline-primary btn-sm" 
+        <span class="fw-bold me-1 fs-5">{{ incident.supports }}</span> <small>Soutiens</small>
+    <button (click)="supportIncident()" class="btn btn-outline-primary btn-sm mx-2" 
     [ngClass]="incident.supported ? 'btn-primary text-white' : 'btn-outline-primary'">
-    <i class="bi bi-hand-thumbs-up"> </i>Soutenir</button>
+    <i class="bi bi-hand-thumbs-up me-1"></i>Soutenir</button>
     </div>
     <div>
         <button class="btn btn-outline-danger btn-sm" (click)="confirmDelete()"><i class="bi bi-trash"></i></button></div>

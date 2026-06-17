@@ -1,13 +1,12 @@
 <!-- Container -->
-<div *ngIf="incident" class="container mt-4" style="background-color: white;">
+@if (incident) {
+  <div class="container mt-4" style="background-color: white;">
 
   <div class="card shadow border-0">
 
     <!-- Image -->
-    <img
-      src="https://picsum.photos/1200/500"
-      class="card-img-top incident-detail-image"
-      alt="incident">
+      <img
+  [src]="incident.image || 'https://picsum.photos/1200/500'" class="card-img-top incident-detail-image" alt="incident">
 
     <div class="card-body p-4">
 
@@ -81,10 +80,13 @@
   </div>
 
 </div>
+}
 
 <!-- Message d'erreur -->
-<div *ngIf="erreur" class="container mt-5 text-center">
-  <div class="alert alert-danger">
-    Incident introuvable.
+@if (erreur) {
+  <div class="container mt-5 text-center">
+    <div class="alert alert-danger">
+      Incident introuvable.
+    </div>
   </div>
-</div>
+}
