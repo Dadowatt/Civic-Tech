@@ -1,18 +1,49 @@
+.stats-card {
+  background-color: #1b326d;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 5px 18px;
+  min-width: 100px;
+}
+
+.stats-card small {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.btn-report {
+  background-color: #3b74b8;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 15px;
+}
+
+.btn-report:hover {
+  background-color: #3368a5;
+  color: white;
+}
+
 nav {
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   background-color: #0F1A3B;
-  padding: 10px 25px;
+  padding: 10px 45px;
 }
 
 .signal{
-    background-color: #376786;
+    background-color: #376796;
+}
+.btn-incident{
+    background-color: #485979;
+}
+.signal:hover{
+    background-color: #77ace0;
 }
 .slogan{
     color: #BABABF;
 }
 .logo-icon{
-    height: 35px;
-    width: 35px;
+    height: 45px;
+    width: 45px;
     border-radius: 5px;
     background-color: #0F1B3D;
 }
