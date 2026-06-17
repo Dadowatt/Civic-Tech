@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IncidentService } from '../../services/incident.service';
 import { Router, RouterLink } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-incident-form',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, CommonModule],
   templateUrl: './incident-form.html',
   styleUrl: './incident-form.css',
 })
@@ -16,6 +16,7 @@ export class IncidentForm {
   constructor(private incidentService: IncidentService,  private router: Router) {}
 
   imagePreview: string | null = null;
+
 
   form = new FormGroup({
     titre: new FormControl('', Validators.required),
@@ -50,6 +51,8 @@ export class IncidentForm {
 
   reader.readAsDataURL(file);
 }
+
+
 
   onSubmit(){
 

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router , RouterModule} from '@angular/router';
 import { IncidentInterface } from '../../models/incident.interface';
 import { IncidentService } from '../../services/incident.service';
 import { CommonModule } from '@angular/common';
+import { IncidentForm } from '../incident-form/incident-form';
 
 @Component({
   selector: 'app-incident-detail',
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class IncidentDetail implements OnInit{
   incident!: IncidentInterface;
+  modifiedIncident!: IncidentInterface;
   erreur = false;
 
   constructor(private incidentService: IncidentService,
@@ -43,5 +45,8 @@ export class IncidentDetail implements OnInit{
     this.router.navigate(['/']);
   }
 
-
 }
+
+
+
+

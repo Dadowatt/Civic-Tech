@@ -13,14 +13,53 @@ import { CommonModule } from '@angular/common';
 })
 export class IncidentList {
   incidents: IncidentInterface[] = [];
+  filteredIncidents: IncidentInterface[] = [];
 
   constructor(private incidentService: IncidentService){}
 
- ngOnInit(){
-    this.incidentService.getIncidents().subscribe(data => {
-      console.log("Liste reçue :", data);
-      this.incidents = data;
-    })
+ngOnInit() {
+  this.incidentService.getIncidents().subscribe(data => {
+    this.incidents = data;
+    this.filteredIncidents = [...data];
+  });
+}
+
+
+
+  // calculer le nombre total d'incidents
+  get totalIncidents(): number {
+    return this.incidents.length;
   }
+
+  // calculer le nombre de catégories
+  get totalCategories(): number {
+    return [...new Set(this.incidents.map(i => i.categorie))].length;
+  }
+
+  // calculer le nombre de soutiens
+  get totalSupports(): number {
+    return this.incidents.reduce((acc, cur) => acc + cur.supports, 0);
+  }
+
+  // Rechercher un incident par categorie 
+
+  searchIncidents(categorie: string): void {
+
+  console.log("Recherche par catégorie", categorie);
+
+  if (categorie === 'Tous') {
+
+    this.filteredIncidents = [...this.incidents];
+
+  } else {
+
+    this.filteredIncidents = this.incidents.filter(
+      i => i.categorie === categorie
+    );
+
+  }
+
+  console.log("Liste filtrée :", this.filteredIncidents);
+}
 
 }

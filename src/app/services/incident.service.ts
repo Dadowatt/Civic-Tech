@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IncidentInterface } from '../models/incident.interface'; // interface pour le mock
 
-// Service pour gérer les incidents
+
 @Injectable({ providedIn: 'root' })  // injectable dans le module app (pour injecter le service dans les composants)
 export class IncidentService  {
   private incidentsSubject = new BehaviorSubject<IncidentInterface[]>([]);
   public incidents$: Observable<IncidentInterface[]> = this.incidentsSubject.asObservable();
+
 
   // Données mock initiales (si localStorage vide)
   private mockIncidents: IncidentInterface[] = [
@@ -43,8 +44,8 @@ export class IncidentService  {
   ];
 
 constructor() {
-  if (typeof window !== 'undefined') {
-    this.loadFromLocalStorage();
+  if (typeof window !== 'undefined') { // si on est sur un navigateur
+    this.loadFromLocalStorage(); // on charge les incidents depuis localStorage
   }
 }
 
@@ -112,17 +113,7 @@ private saveToLocalStorage(): void {
     this.incidentsSubject.next([...current]); // immutable update
     this.saveToLocalStorage();
   }
-
-  // Optionnel : mettre à jour un incident (si besoin) 
-  updateIncident(updated: IncidentInterface): void {
-    const current = this.incidentsSubject.getValue();
-    const index = current.findIndex(inc => inc.id === updated.id);
-    if (index !== -1) {
-      current[index] = updated;
-      this.incidentsSubject.next([...current]);
-      this.saveToLocalStorage();
-    }
-  }
+    
 
   deleteIncident(id: number): void {
   const current = this.incidentsSubject.getValue();
@@ -132,4 +123,5 @@ private saveToLocalStorage(): void {
   this.incidentsSubject.next(updated);
   this.saveToLocalStorage();
 }
+
 }
