@@ -30,22 +30,52 @@
 
   <!-- les filtres par catégorie pour afficher les incidents concernés -->
  <div class="d-flex gap-2 mb-4 mt-4 flex-wrap">
-    <button class="btn btn-dark btn-sm rounded-pill px-4" (click)="searchIncidents('Tous')">Tous</button>
-    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" (click)="searchIncidents('Voirie')">Voirie</button>
-    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" (click)="searchIncidents('Électricité')">Électricité</button>
-    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" (click)="searchIncidents('Sécurité')">Sécurité</button>
-    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" (click)="searchIncidents('Assainissement')">Assainissement</button>
-    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" (click)="searchIncidents('Autre')">Autre</button>
+    <button class="btn btn-outline-secondary btn-sm rounded-pill px-4" 
+    [class.active]="selectedCategorie === 'Tous'"
+     (click)="searchIncidents('Tous')">Tous</button>
+
+    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" 
+    [class.active]="selectedCategorie === 'Voirie'"
+     (click)="searchIncidents('Voirie')">Voirie</button>
+
+    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" 
+    [class.active]="selectedCategorie === 'Électricité'"
+     (click)="searchIncidents('Électricité')">Électricité</button>
+
+    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" 
+    [class.active]="selectedCategorie === 'Sécurité'"
+     (click)="searchIncidents('Sécurité')">Sécurité</button>
+
+    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" 
+    [class.active]="selectedCategorie === 'Assainissement'"
+     (click)="searchIncidents('Assainissement')">Assainissement</button>
+
+    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" 
+    [class.active]="selectedCategorie === 'Autre'"
+     (click)="searchIncidents('Autre')">Autre</button>
   </div>
 
-  <div class="row g-4">
-  @for (incident of filteredIncidents; track incident.id) {
-    <div class="col-md-6 col-lg-4">
-      <app-incident-card
-        [incident]="incident">
-      </app-incident-card>
-    </div>
-  }
+<div class="row g-4">
+
+  @if (filteredIncidents.length > 0) {
+
+    @for (incident of filteredIncidents; track incident.id) {
+      <div class="col-md-6 col-lg-4">
+        <app-incident-card
+          [incident]="incident">
+        </app-incident-card>
+      </div>
+    }
+
+  } @else {
+      <div class="d-flex justify-content-center mt-4">
+        <div class="w-100 bg-light rounded-4 p-5 text-center">
+          <p class="text-muted mb-0">
+            Aucun incident signalé pour la catégorie "{{ selectedCategorie }}".
+          </p>
+        </div>
+      </div>
+}
 </div>
 
 </div>

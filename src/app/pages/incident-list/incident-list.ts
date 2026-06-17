@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class IncidentList {
   incidents: IncidentInterface[] = [];
   filteredIncidents: IncidentInterface[] = [];
+  selectedCategorie: string = 'Tous';
 
   constructor(private incidentService: IncidentService){}
 
@@ -43,9 +44,7 @@ ngOnInit() {
   // Rechercher un incident par categorie 
 
   searchIncidents(categorie: string): void {
-
-  console.log("Recherche par catégorie", categorie);
-
+  this.selectedCategorie = categorie;
   if (categorie === 'Tous') {
 
     this.filteredIncidents = [...this.incidents];
@@ -55,10 +54,6 @@ ngOnInit() {
     this.filteredIncidents = this.incidents.filter(
       i => i.categorie === categorie
     );
-
   }
-
-  console.log("Liste filtrée :", this.filteredIncidents);
 }
-
 }
