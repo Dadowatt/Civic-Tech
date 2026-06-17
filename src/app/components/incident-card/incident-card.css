@@ -1,5 +1,5 @@
 .incident-image {
-  height: 220px;
+  height: 150px;
   object-fit: cover;
 }
 
@@ -9,4 +9,11 @@
 
 .card:hover {
   transform: translateY(-4px);
+}
+.card-description {
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

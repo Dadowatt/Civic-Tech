@@ -1,35 +1,35 @@
+<div class="card h-100 shadow border-0" style="width: 330px;">
 
-<div class="card h-100 shadow border-0">
-
-  <img [src]="incident.image || 'https://picsum.photos/600/400'" class="card-img-top incident-image"
-  alt="incident">
+  <img [src]="incident.image || 'https://picsum.photos/600/400'" class="card-img-top incident-image" alt="incident">
 
   <div class="card-body">
 
     <div class="d-flex justify-content-between">
-            <span [ngClass]="getCategoryClass(incident.categorie)" class="mb-3">{{ incident.categorie }}</span>
+      <span [ngClass]="getCategoryClass(incident.categorie)" class="mb-3 p-2">{{ incident.categorie }}</span>
 
-            <a [routerLink]="['/incident', incident.id]" class="text-primary fw-bold text-decoration-none">voir plus</a>
+      <a [routerLink]="['/incident', incident.id]" class="text-primary fw-bold text-decoration-none">voir plus</a>
     </div>
 
-    <h5 class="card-title fw-bold">{{ incident.titre }}</h5>
+    <h6 class="card-title text-truncate fw-bold">{{ incident.titre }}</h6>
 
-    <p class="card-text text-muted">{{ incident.description }}</p>
+    <p class="card-text card-description text-muted">{{ incident.description }}</p>
 
     <div class="small text-secondary mt-3">
       <div><span><i class="bi bi-geo-alt-fill text-primary my-2"></i></span> {{ incident.localisation }}</div>
-      <div><span><i class="bi bi-calendar-event-fill text-primary"></i></span> {{ incident.date | date:'d MMM yyyy' }}</div>
+      <div><span><i class="bi bi-calendar-event-fill text-primary"></i></span> {{ incident.date | date:'d MMM yyyy' }}
+      </div>
     </div>
   </div>
 
   <div class="card-footer bg-white d-flex justify-content-between align-items-center">
     <div>
-        <span class="fw-bold me-1 fs-5">{{ incident.supports }}</span> <small>Soutiens</small>
-    <button (click)="supportIncident()" class="btn btn-outline-primary btn-sm mx-2" 
-    [ngClass]="incident.supported ? 'btn-primary text-white' : 'btn-outline-primary'">
-    <i class="bi bi-hand-thumbs-up me-1"></i>Soutenir</button>
+      <span class="fw-bold me-1 fs-5">{{ incident.supports }}</span> <small>Soutiens</small>
+      <button (click)="supportIncident()" class="btn btn-outline-primary btn-sm mx-2"
+        [ngClass]="incident.supported ? 'btn-primary text-white' : 'btn-outline-primary'">
+        <i class="bi bi-hand-thumbs-up me-1"></i>Soutenir</button>
     </div>
     <div>
-        <button class="btn btn-outline-danger btn-sm" (click)="confirmDelete()"><i class="bi bi-trash"></i></button></div>
+      <button class="btn btn-outline-danger btn-sm" (click)="confirmDelete()"><i class="bi bi-trash"></i></button>
+    </div>
   </div>
 </div>
