@@ -3,12 +3,11 @@ import { IncidentInterface } from '../../models/incident.interface';
 import { IncidentService } from '../../services/incident.service';
 import { IncidentCard } from "../../components/incident-card/incident-card";
 import { CommonModule } from '@angular/common';
-import { RouterLink } from "@angular/router";
 
 
 @Component({
   selector: 'app-incident-list',
-  imports: [IncidentCard, CommonModule, RouterLink],
+  imports: [IncidentCard, CommonModule],
   templateUrl: './incident-list.html',
   styleUrl: './incident-list.css',
 })
