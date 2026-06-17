@@ -1,59 +1,96 @@
-# CivicTech
+# Plateforme de Signalement Citoyen - Civic-Tech
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.1.
+## 1. Présentation du projet
 
-## Development server
+La Plateforme de Signalement Citoyen est une application web développée avec Angular permettant aux habitants de signaler des incidents locaux (lampadaire cassé, problème de voirie, assainissement, sécurité, etc.) afin de faciliter la communication entre les citoyens et les services municipaux. L'application permet de créer un signalement via un formulaire sécurisé avec des validations strictes, consulter la liste des incidents existants, afficher le détail d'un incident et soutenir une cause en augmentant le nombre de soutiens. Les données sont persistées grâce au stockage local du navigateur afin de conserver les signalements après un rafraîchissement de la page.
 
-To start a local development server, run:
+
+## 2. Technologies utilisées
+
+- Angular
+- TypeScript
+- HTML5
+- CSS3
+- Bootstrap
+- Bootstrap Icons
+- Reactive Forms Angular
+- RxJS
+- LocalStorage
+
+
+## 3. Installation et lancement
+
+### Prérequis
+
+Avant de lancer le projet, il faut avoir installé :
+
+- Node.js
+- npm
+- Angular CLI
+
+
+Vérifier les versions :
 
 ```bash
+node -v
+
+npm -v
+
+ng version
+
+## 4. Cloner le projet
+https://github.com/Dadowatt/Civic-Tech/tree/develop
+
+## 5. Accéder au dossier du projet
+cd civic-tech
+
+## 6. Installer les dépendances
+npm install
+
+## 7. Installer Bootstrap et Bootstrap Icons 
+npm install bootstrap bootstrap-icons
+
+## 8. Lancer l'application en local
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 9. L'application sera accessible à l'adresse :
+http://localhost:4200
 
-## Code scaffolding
+## Architecture et découpage du projet
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+L'application suit une architecture basée sur les composants Angular.
+Organisation principale :
 
-```bash
-ng generate component component-name
-```
+src/app
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+├── components
 
-```bash
-ng generate --help
-```
+│   ├── incident-card
+│   │   ├── incident-card.ts
+│   │   ├── incident-card.html
+│   │   └── incident-card.css
+│   │
+│   ├── incident-form
+│   │   ├── incident-form.ts
+│   │   ├── incident-form.html
+│   │   └── incident-form.css
+│   │
+│   └── incident-detail
+│       ├── incident-detail.ts
+│       ├── incident-detail.html
+│       └── incident-detail.css
+│
 
-## Building
+├── models
 
-To build the project run:
+│   └── incident.interface.ts
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+├── services
 
-## Running unit tests
+│   └── incident.service.ts
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
-```bash
-ng test
-```
+├── app.routes.ts
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+└── app.component.ts
