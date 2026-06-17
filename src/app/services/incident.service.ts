@@ -91,7 +91,7 @@ private saveToLocalStorage(): void {
       supports: 0,
       date: new Date(),
     };
-    const updated = [...current, newIncident];
+    const updated = [newIncident, ...current];
     this.incidentsSubject.next(updated);
     this.saveToLocalStorage();
   }

@@ -4,6 +4,6 @@ footer{
 footer li a{
     color: #BABABF;
 }
-.list-unstyled li{
-    color: #BABABF;;
+.list-unstyled li, .t-slate{
+    color: #BABABF;
 }
