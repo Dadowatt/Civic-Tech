@@ -1,33 +1,27 @@
-<!-- Container -->
 @if (incident) {
   <div class="container mt-4 my-5" >
 
   <div class="card shadow border-0">
 
-    <!-- Image -->
       <img
   [src]="incident.image || 'https://picsum.photos/1200/500'" class="card-img-top incident-detail-image" alt="incident">
 
     <div class="card-body p-4">
 
-      <!-- Catégorie -->
       <span class="badge bg-secondary mb-3">
         {{ incident.categorie }}
       </span>
 
-      <!-- Titre -->
       <h2 class="fw-bold mb-3">
         {{ incident.titre }}
       </h2>
 
-      <!-- Description -->
       <p class="text-muted fs-5">
         {{ incident.description }}
       </p>
 
       <hr>
 
-      <!-- Informations -->
       <div class="row mt-4">
 
         <div class="col-md-6 mb-3">
@@ -50,7 +44,6 @@
 
     </div>
 
-    <!-- Footer -->
     <div class="card-footer bg-white d-flex justify-content-between align-items-center p-3">
 
       <span class="fw-bold text-primary">

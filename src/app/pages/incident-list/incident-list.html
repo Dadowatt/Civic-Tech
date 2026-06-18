@@ -29,36 +29,34 @@
   </div>
 
   <!-- les filtres par catégorie pour afficher les incidents concernés -->
- <div class="d-flex gap-2 mb-4 mt-4 flex-wrap">
-    <button class="btn btn-outline-secondary btn-sm rounded-pill px-4" 
+ <div class="d-flex gap-2 my-5 flex-wrap">
+    <button class="btn btn-filtre btn-sm rounded-pill px-4" 
     [class.active]="selectedCategorie === 'Tous'"
      (click)="searchIncidents('Tous')">Tous</button>
 
-    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" 
+    <button class="btn btn-filtre btn-sm  rounded-pill px-3" 
     [class.active]="selectedCategorie === 'Voirie'"
      (click)="searchIncidents('Voirie')">Voirie</button>
 
-    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" 
+    <button class="btn btn-filtre btn-sm  rounded-pill px-3" 
     [class.active]="selectedCategorie === 'Électricité'"
      (click)="searchIncidents('Électricité')">Électricité</button>
 
-    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" 
+    <button class="btn btn-filtre btn-sm  rounded-pill px-3" 
     [class.active]="selectedCategorie === 'Sécurité'"
      (click)="searchIncidents('Sécurité')">Sécurité</button>
 
-    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" 
+    <button class="btn btn-filtre btn-sm  rounded-pill px-3" 
     [class.active]="selectedCategorie === 'Assainissement'"
      (click)="searchIncidents('Assainissement')">Assainissement</button>
 
-    <button class="btn btn-outline-secondary btn-sm  rounded-pill px-3" 
+    <button class="btn btn-filtre btn-sm  rounded-pill px-3" 
     [class.active]="selectedCategorie === 'Autre'"
      (click)="searchIncidents('Autre')">Autre</button>
   </div>
 
-<div class="row g-4">
-
+<div class="row g-5">
   @if (filteredIncidents.length > 0) {
-
     @for (incident of filteredIncidents; track incident.id) {
       <div class="col-md-6 col-lg-4">
         <app-incident-card
@@ -68,8 +66,8 @@
     }
 
   } @else {
-      <div class="d-flex justify-content-center mt-4">
-        <div class="w-100 bg-light rounded-4 p-5 text-center">
+      <div class="d-flex justify-content-center mt-5">
+        <div class="w-100 bg-white rounded-4 p-5 text-center">
           <p class="text-muted mb-0">
             Aucun incident signalé pour la catégorie "{{ selectedCategorie }}".
           </p>

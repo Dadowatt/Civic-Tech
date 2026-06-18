@@ -12,3 +12,14 @@
 .blocs{
     width: 350px;
 }
+
+.btn-filtre {
+  border: 1px solid #6c757d;
+  background-color: white;
+}
+
+.btn-filtre.active {
+  background-color: #0F1B3D;
+  border-color: #0F1B3D;
+  color: white;
+}
