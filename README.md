@@ -2,69 +2,97 @@
 
 ## 1. Présentation du projet
 
-La Plateforme de Signalement Citoyen est une application web développée avec Angular permettant aux habitants de signaler des incidents locaux (lampadaire cassé, problème de voirie, assainissement, sécurité, etc.) afin de faciliter la communication entre les citoyens et les services municipaux. L'application permet de créer un signalement via un formulaire sécurisé avec des validations strictes, consulter la liste des incidents existants, afficher le détail d'un incident et soutenir une cause en augmentant le nombre de soutiens. Les données sont persistées grâce au stockage local du navigateur afin de conserver les signalements après un rafraîchissement de la page.
+La Plateforme de Signalement Citoyen est une application web développée avec Angular permettant aux habitants de signaler des incidents locaux (lampadaire cassé, problème de voirie, assainissement, sécurité, etc.) afin de faciliter la communication entre les citoyens et les services municipaux. L'application permet de créer un signalement via un formulaire sécurisé avec des validations strictes, de consulter la liste des incidents existants, d'afficher le détail d'un incident et de soutenir une cause en augmentant le nombre de soutiens. Les données sont persistées grâce au stockage local du navigateur afin de conserver les signalements après un rafraîchissement de la page.
 
+## 2. Lien de déploiement
 
-## 2. Technologies utilisées
+https://civic-tech-incidents.netlify.app/
 
-- Angular
-- TypeScript
-- HTML5
-- CSS3
-- Bootstrap
-- Bootstrap Icons
-- Reactive Forms Angular
-- RxJS
-- LocalStorage
+## 3. Technologies utilisées
 
+* Angular
+* TypeScript
+* HTML5
+* CSS3
+* Bootstrap
+* Bootstrap Icons
+* Reactive Forms Angular
+* RxJS
+* LocalStorage
 
-## 3. Installation et lancement
+## 4. Installation et lancement
 
 ### Prérequis
 
-Avant de lancer le projet, il faut avoir installé :
+Avant de lancer le projet, assurez-vous d'avoir installé :
 
-- Node.js
-- npm
-- Angular CLI
+* Node.js
+* npm
+* Angular CLI
 
-
-Vérifier les versions :
+### Vérifier les versions installées
 
 ```bash
 node -v
-
 npm -v
-
 ng version
+```
 
-## 4. Cloner le projet
-https://github.com/Dadowatt/Civic-Tech/tree/develop
+### Cloner le projet
 
-## 5. Accéder au dossier du projet
-cd civic-tech
+```bash
+git clone https://github.com/Dadowatt/Civic-Tech.git
+```
 
-## 6. Installer les dépendances
+### Accéder au dossier du projet
+
+```bash
+cd Civic-Tech
+```
+
+### Installer les dépendances
+
+```bash
 npm install
+```
 
-## 7. Installer Bootstrap et Bootstrap Icons 
+### Installer Bootstrap et Bootstrap Icons
+
+```bash
 npm install bootstrap bootstrap-icons
+```
 
-## 8. Lancer l'application en local
+### Lancer l'application en local
+
+```bash
 ng serve
+```
 
-## 9. L'application sera accessible à l'adresse :
+L'application sera accessible à l'adresse suivante :
+
+```text
 http://localhost:4200
+```
 
-## Architecture et découpage du projet
+## 5. Architecture et découpage du projet
 
 L'application suit une architecture basée sur les composants Angular.
-Organisation principale :
 
+### Composant Parent
+
+* `AppComponent`
+
+### Composants Enfants
+
+* `IncidentFormComponent` : permet de créer un nouveau signalement.
+* `IncidentCardComponent` : affiche un résumé des informations d'un signalement.
+* `IncidentDetailComponent` : affiche les détails complets d'un signalement.
+
+### Organisation du projet
+
+```text
 src/app
-
 ├── components
-
 │   ├── incident-card
 │   │   ├── incident-card.ts
 │   │   ├── incident-card.html
@@ -80,17 +108,35 @@ src/app
 │       ├── incident-detail.html
 │       └── incident-detail.css
 │
-
 ├── models
-
 │   └── incident.interface.ts
-
-
+│
 ├── services
-
 │   └── incident.service.ts
-
-
+│
 ├── app.routes.ts
-
 └── app.component.ts
+```
+
+### Relations entre les composants
+
+```text
+AppComponent
+│
+├── IncidentFormComponent
+├── IncidentCardComponent
+└── IncidentDetailComponent
+```
+
+## 6. Gestion des données
+
+Les données principales de l'application sont gérées par le service `IncidentService`.
+
+* Les signalements sont stockés dans le `LocalStorage` du navigateur.
+* Lorsqu'un utilisateur crée un nouveau signalement, les données sont enregistrées dans le `LocalStorage`.
+* Au chargement de l'application, le service récupère les données enregistrées afin de restaurer les signalements existants.
+* Les informations relatives à un incident sont définies dans le fichier `models/incident.interface.ts`.
+* Cette approche permet de conserver les données même après un rechargement de la page, sans avoir besoin d'une base de données externe.
+
+```
+```

@@ -15,7 +15,7 @@
   background-color: #3b74b8;
   color: white;
   border-radius: 8px;
-  padding: 10px 15px;
+  padding: 5px 10px;
 }
 
 .btn-report:hover {
@@ -29,15 +29,10 @@ nav {
   padding: 10px 45px;
 }
 
-.signal{
-    background-color: #376796;
-}
 .btn-incident{
     background-color: #485979;
 }
-.signal:hover{
-    background-color: #77ace0;
-}
+
 .slogan{
     color: #BABABF;
 }

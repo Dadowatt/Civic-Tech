@@ -98,21 +98,28 @@ private saveToLocalStorage(): void {
 
 
   // Incrémenter le compteur de soutiens pour un incident
-  supportIncident(id: number): void {
-    const current = this.incidentsSubject.getValue(); // on récupère la liste
-    const incident = current.find(inc => inc.id === id);
-    if (!incident) return;
+supportIncident(id: number): void {
+  const current = this.incidentsSubject.getValue();
 
-    if (incident.supported) {
-      incident.supports--;
-      incident.supported = false
-    }else{
-      incident.supports++;
-      incident.supported = true;
+  const updated = current.map(incident => {
+
+    if (incident.id !== id) {
+      return incident;
     }
-    this.incidentsSubject.next([...current]); // immutable update
-    this.saveToLocalStorage();
-  }
+
+    return {
+      ...incident,
+      supports: incident.supported
+        ? incident.supports - 1
+        : incident.supports + 1,
+
+      supported: !incident.supported
+    };
+
+  });
+  this.incidentsSubject.next(updated);
+  this.saveToLocalStorage();
+}
     
 
   deleteIncident(id: number): void {

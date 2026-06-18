@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
-import { IncidentInterface } from '../../models/incident.interface';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { IncidentService } from '../../services/incident.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -9,20 +9,33 @@ import { IncidentService } from '../../services/incident.service';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
- // nombe total de soutiens depuis IncidentList
-export class Navbar {
-  incidents: IncidentInterface[] = [];
-  support = 0;
-  constructor(private incidentService: IncidentService){}
+export class Navbar implements OnInit {
+
+  totalSupports = 0;
+
+  constructor(
+    private incidentService: IncidentService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+
   ngOnInit(): void {
-    this.incidentService.getIncidents().subscribe(data => {
-      this.incidents = data;
-      this.support = this.incidents.reduce((acc, cur) => acc + cur.supports, 0);
-    });
+
+    this.incidentService.getIncidents()
+      .pipe(
+        map(incidents =>
+          incidents.reduce(
+            (total, incident) => total + incident.supports,
+            0
+          )
+        )
+      )
+      .subscribe(total => {
+        this.totalSupports = total;
+        this.cdr.detectChanges();
+
+      });
+
   }
-   get totalSupports(): number {
-    return this.incidents.reduce((acc, cur) => acc + cur.supports, 0);
-  } 
 
 }
-

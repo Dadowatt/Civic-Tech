@@ -21,9 +21,7 @@ export class IncidentCard {
   ){}
 
 confirmDelete() {
-  const confirmAction = confirm(
-    "Es-tu sûr de vouloir supprimer cet incident ?"
-  );
+  const confirmAction = confirm("Es-tu sûr de vouloir supprimer cet incident ?");
 
   if (confirmAction) {
     this.incidentService.deleteIncident(this.incident.id);

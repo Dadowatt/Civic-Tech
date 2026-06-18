@@ -20,10 +20,19 @@ export class IncidentList {
 
   // On initialise le composant
 ngOnInit() {
-  this.incidentService.getIncidents().subscribe(data => {
+
+  this.incidentService.getIncidents()
+  .subscribe(data => {
+
     this.incidents = data;
-    this.filteredIncidents = [...data];
+
+    this.filteredIncidents = data.filter(i =>
+      this.selectedCategorie === 'Tous'
+      || i.categorie === this.selectedCategorie
+    );
+
   });
+
 }
 
   // calculer le nombre total d'incidents
